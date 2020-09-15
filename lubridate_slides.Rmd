@@ -49,12 +49,12 @@ knitr::include_graphics("images/lubridate_hex.png")
 
 ---
 class: left, middle
-# This week: Time spans in lubridate
+# Today: Time spans in lubridate
 ![:scale 90%](images/lubridate_timespans.png)
 
 ---
 class: left, middle
-# Today's lesson: intervals
+# This lesson: intervals
 ![:scale 90%](images/lubridate_timespans_intervals.png)
 
 ---
