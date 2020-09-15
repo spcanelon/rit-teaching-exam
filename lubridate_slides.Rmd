@@ -1,7 +1,7 @@
 ---
 title: "Using lubridate to<br/>work with time intervals"
 subtitle: "RStudio Instructor Certification Teaching Exam"
-author: "Silvia Canelón"
+author: "Silvia Canelón, PhD"
 institute: "@spcanelon"
 date: "September 17th, 2020"
 output:
