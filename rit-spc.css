@@ -1,12 +1,40 @@
 h1, h2, h3 {
   font-weight: normal;
-  color: #4c84b7;
+  color: #122140;
 }
 a, a > code {
   color: #4C84B7;
 }
+
+/* inline code highlighting */
+/* https://github.com/yihui/xaringan/wiki/Inline-code-highlighting */
+
+.remark-inline-code{
+  /* background: #F5F5F5; /* lighter */
+  background: #edf2f7; /* darker */
+  border-radius: 5px;
+  padding: 1.75px;
+}
 .remark-code-line-highlighted { 
-  background-color: rgba(136, 57, 138, 0.3); 
+  background-color: #c9dae9; 
+}
+
+/* code chunk background layer */
+pre {
+  border: 1px solid #c9dae9; /* code chunk border*/
+  box-shadow: 2px 2px 2px #eee;
+  padding: 0.25em;
+  background: #c9dae9 !important;
+  overflow-x: auto;
+  border-radius: 5px; /* modify rounding of corners*/
+}
+pre code { 
+  background: none; 
+  font-size: 1.25rem !important; 
+}
+
+.hljs {
+	background: #c9dae9; /* code chunk background */
 }
 
 .inverse {
@@ -85,14 +113,4 @@ a, a > code {
   width: 33%;
   text-align: left;
   padding-left: 20px;
-}
-
-/* inline code highlighting */
-/* https://github.com/yihui/xaringan/wiki/Inline-code-highlighting */
-
-.remark-inline-code{
-  /* background: #F5F5F5; /* lighter */
-  background: #e7e8e2; /* darker */
-  border-radius: 2px;
-  padding: 1.5px;
 }

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500');
 @import url('https://fonts.googleapis.com/css?family=Lora:300,400,500');
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:300,400,500');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed+Mono:300,400,500');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500');
 
 body { 
@@ -12,29 +13,32 @@ body {
 h1 {
   font-family: 'Lora', serif;
   font-weight: 500;
-  color: #562457;
+  color: #1e2c3c;
 }
 
 h2 {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
-  color: #2E3440;
+  color: #122140;
 }
 
 h3 {
   font-family: 'Source Sans Pro', sans-serif;
   /*text-transform: uppercase;*/
   font-weight: 400;
-  color: #2E3440;
+  color: #122140;
   font-size: 1.75em !important;
 }
 
 h4, h5, h6 {
   font-family: 'Source Sans Pro', serif;
   font-weight: 400;
-  color: #2E3440;
+  color: #122140;
 }
 
 .remark-code, .remark-inline-code { 
-  font-family: 'Roboto Mono', monospace; 
-  color: #88398A}
+  font-family: 'Source Code Pro', monospace; 
+  font-weight: 500;
+  color: #4C84B7;
+  font-size: 1.1em !important;
+}
