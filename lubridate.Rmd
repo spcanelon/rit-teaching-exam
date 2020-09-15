@@ -1,0 +1,85 @@
+---
+title: "Identifying events in a timeline with lubridate"
+output: html_notebook
+---
+
+# This tutorial
+When we analyze Electronic Health Records, we often want to know when a particular event took place within a patient's timeline to help us determine if it might have an impact on an health outcome of interest. 
+
+The **lubridate** package can help us work with dates and times in our dataset!
+
+# The data
+For this tutorial, we'll use a dataset on Nobel Laureates originally prepared by [Kaggle](https://www.kaggle.com/nobelfoundation/nobel-laureates#archive.csv) and made available for [TidyTuesday on 2019-05-14](https://github.com/rfordatascience/tidytuesday/blob/3040e14f3b4934e6fc621f57d78324b53e549086/data/2019/2019-05-14/readme.md).
+
+This dataset contains a few date variables for each laureate and will serve as a useful analogy for working with patient health records.
+
+# Setup
+```{r}
+library(tidyverse)
+library(lubridate)
+```
+
+# Importing the data
+```{r}
+nobel_laureates <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
+
+nobel_laureates
+```
+
+The dataset doesn't include the month and day that the awards were given but we know the awards are given on [December 10th every year, on the anniversary of Alfred Nobel's death](https://www.nobelprize.org/nobel-prize-award-ceremonies/).
+
+We can use the `prize_year` and lubridate's `make_date()` function to create a date, and then use lubridate's `update()` function to update the date to reflect the month (12) and day (10) we need.
+
+# Creating `prize_date`
+```{r}
+# only lubridate
+nobel_laureates_prize_dates <-
+nobel_laureates %>%
+  select(prize_year, full_name, gender, birth_date, death_date) %>%
+  mutate(prize_year_new = make_date(prize_year)) %>%
+  mutate(prize_date = update(prize_year_new, month = 12, mday = 10))
+
+# more compact option: https://community.rstudio.com/t/character-conversion-to-date-using-lubridate/29272/2
+nobel_laureates %>%
+  select(prize_year, full_name, gender, birth_date, death_date) %>%
+  mutate(prize_date = paste0(prize_year, "12-10"),
+         prize_date = as_date(prize_date))
+```
+
+# Finding `age_at_award`
+```{r}
+# https://r4ds.had.co.nz/dates-and-times.html#intervals
+nobel_laureates_age <-
+nobel_laureates_prize_in_lifetime %>%
+  mutate(age_at_award = interval(birth_date, prize_date)/dyears())
+```
+
+# Creating `prize_in_lifetime`
+```{r}
+# https://lubridate.tidyverse.org/reference/within-interval.html
+nobel_laureates_prize_in_lifetime <-
+nobel_laureates_prize_dates %>%
+  select(prize_date, everything()) %>%
+  mutate(prize_in_lifetime = ifelse(prize_date %within% interval(birth_date, death_date), "yes", "no")) 
+```
+
+# Calculating span of time after death
+```{r}
+nobel_laureates_prize_in_lifetime %>%
+  mutate(death_to_prize = ifelse(prize_in_lifetime == "no", 
+                                 interval(death_date, prize_date)/dyears(), NA)) %>%
+  filter(!is.na(death_to_prize))
+```
+
+# Plotting `age_at_award` categorized by `prize_in_lifetime` and by `gender`
+```{r}
+nobel_laureates_age %>%
+  ggplot(aes(x = prize_in_lifetime)) + 
+  geom_bar(aes(fill = gender)) 
+
+nobel_laureates_age %>%
+  filter(!is.na(prize_in_lifetime)) %>%
+  ggplot(aes(x = prize_in_lifetime, y = age_at_award)) + 
+  geom_boxplot(aes(fill = gender))
+```
+

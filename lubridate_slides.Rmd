@@ -1,0 +1,65 @@
+---
+title: "Identifying events in a timeline<br/>with lubridate"
+subtitle: "RStudio Instructor Certification Teaching Exam"
+author: "Silvia Canelón"
+institute: "@spcanelon"
+date: "September 17th, 2020"
+output:
+  xaringan::moon_reader:
+    css: ["default", "rit-spc.css", "rit-fonts-spc.css"]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      highlightLanguage: ["r", "css", "yaml"]
+      countIncrementalSlides: true
+      ratio: "16:9"
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(collapse = TRUE,
+                      fig.retina = 3,
+                      ccache = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+
+library(tidyverse)
+library(lubridate)
+library(xaringanExtra)
+xaringanExtra::use_xaringan_extra(include = c("panelset", "tile_view", "share_again", "use_broadcast"))
+xaringanExtra::style_share_again(share_buttons = c("twitter", "linkedin", "pocket"))
+xaringanExtra::embed_xaringan(
+  url = "https://spcanelon.github.io/rit-teaching-exam", ratio = "16:9")
+```
+
+class: title-slide, center, bottom
+
+```{r, echo=FALSE, out.width=100}
+knitr::include_graphics("images/lubridate.png")
+```
+# `r rmarkdown::metadata$title`
+
+## `r rmarkdown::metadata$subtitle`
+
+### `r rmarkdown::metadata$author`
+
+### `r rmarkdown::metadata$date`
+
+---
+class: left, middle
+
+# The dataset contains information about
+
+### All Nobel Laureates (i.e. date of birth, date of death)
+### The Nobel Prize Award (i.e. year of the award)
+
+#### Originally prepared by Kaggle and then made available for TidyTuesday
+
+---
+class: inverse, center, middle
+
+## 1. .bold[Calculate laureate's age at the time of the award]
+ 
+## 2. Determine if the prize was awarded during the laureate's lifetime

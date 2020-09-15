@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500');
+@import url('https://fonts.googleapis.com/css?family=Lora:300,400,500');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:300,400,500');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500');
+
+body { 
+  font-family:'Source Sans Pro', sans-serif;
+  font-weight: 375;
+  color: #2E3440;
+}
+
+h1 {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  color: #562457;
+}
+
+h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  color: #2E3440;
+}
+
+h3 {
+  font-family: 'Source Sans Pro', sans-serif;
+  /*text-transform: uppercase;*/
+  font-weight: 400;
+  color: #2E3440;
+  font-size: 1.75em !important;
+}
+
+h4, h5, h6 {
+  font-family: 'Source Sans Pro', serif;
+  font-weight: 400;
+  color: #2E3440;
+}
+
+.remark-code, .remark-inline-code { 
+  font-family: 'Roboto Mono', monospace; 
+  color: #88398A}
