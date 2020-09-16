@@ -1,5 +1,5 @@
 # RStudio Instructor Certification Teaching Exam
-Repo for material relating to the RStudio Instructor Certification teaching exam
+Using lubridate to work with time intervals: Materials created for the RStudio Instructor Certification teaching exam
 
 ![](images/title_slide.png)
 
