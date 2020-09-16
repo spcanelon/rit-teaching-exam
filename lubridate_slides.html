@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Using lubridate to work with time intervals</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Silvia Canelón, PhD" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <script src="libs/fitvids/fitvids.min.js"></script>
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="rit-spc.css" type="text/css" />
+    <link rel="stylesheet" href="rit-fonts-spc.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: title-slide, center, bottom
+
+&lt;img src="images/lubridate_hex.png" width="100" /&gt;
+# Using lubridate to&lt;br/&gt;work with time intervals
+
+## RStudio Instructor Certification Teaching Exam
+
+### Silvia Canelón, PhD
+
+### September 17th, 2020
+
+---
+class: left, middle
+# Today: Time spans in lubridate
+.center[
+![:scale 90%](images/lubridate_timespans.png)
+]
+
+---
+class: left, middle
+# This lesson: intervals
+.center[
+![:scale 90%](images/lubridate_timespans_intervals.png)
+]
+
+---
+class: left, middle
+
+# The dataset contains information about
+
+### <i class="fas  fa-user-friends "></i> All Nobel laureates (i.e. date of birth, date of death)
+
+--
+### <i class="fas  fa-award "></i> The Nobel Prize Award (i.e. year of the award)
+
+--
+### Originally prepared by [Kaggle](https://www.kaggle.com/nobelfoundation/nobel-laureates#archive.csv) and then&lt;br/&gt;made available for [TidyTuesday on 2019-05-14](https://github.com/rfordatascience/tidytuesday/blob/3040e14f3b4934e6fc621f57d78324b53e549086/data/2019/2019-05-14/readme.md)
+
+---
+class: inverse, center, middle
+
+# Examples
+
+## 1. .bold[Calculate laureate's age at the time of the award]
+ 
+## 2. Determine if the prize was awarded&lt;br/&gt;during the laureate's lifetime
+
+---
+.left-column[
+### .bold[<i class="fas  fa-lightbulb "></i> Goal] Calculate laureate's age at the time of the award
+]
+.right-column[
+![:scale 90%](images/RIT_lubridate_ex1-1.png)
+]
+
+---
+.left-column[
+### .bold[<i class="fas  fa-lightbulb "></i> Goal] Calculate laureate's age at the time of the award
+
+
+]
+.right-column[
+![:scale 90%](images/RIT_lubridate_ex1-2.png)
+]
+
+---
+# <i class="fas  fa-brain "></i> Knowledge check
+## Which of these could we use to find a time interval?
+
+### a. `interval(start_point) - interval(end_point)`
+
+### b. `start_point - end_point`
+
+### c. `interval(start_point, end_point)`
+
+### d. `start_point %--% end_point`
+
+--
+
+## <i class="fas  fa-check-square "></i> Correct answers: c and d
+
+---
+class: title-slide, center, middle
+# Let's go live!
+
+## <i class="fas  fa-code "></i>
+
+
+---
+class: inverse, center, middle
+
+# Examples
+
+## 1. Calculate laureate's age at the time of the award
+ 
+## 2. .bold[Determine if the prize was awarded&lt;br/&gt;during the laureate's lifetime]
+
+---
+.left-column[
+### .bold[<i class="fas  fa-lightbulb "></i> Goal] Determine if the prize was awarded during the laureate's lifetime
+]
+
+.right-column[
+![:scale 90%](images/RIT_lubridate_ex1-2.png)
+]
+
+---
+.left-column[
+### .bold[<i class="fas  fa-lightbulb "></i> Goal] Determine if the prize was awarded during the laureate's lifetime
+]
+
+.right-column[
+![:scale 90%](images/RIT_lubridate_ex2-1.png)
+]
+
+---
+.left-column[
+### .bold[<i class="fas  fa-lightbulb "></i> Goal] Determine if the prize was awarded during the laureate's lifetime
+]
+
+.right-column[
+![:scale 90%](images/RIT_lubridate_ex2-2.png)
+]
+
+---
+.left-column[
+### .bold[<i class="fas  fa-lightbulb "></i> Goal] Determine if the prize was awarded during the laureate's lifetime
+]
+
+.right-column[
+![:scale 90%](images/RIT_lubridate_ex2-3.png)
+]
+
+---
+# <i class="fas  fa-brain "></i> Knowledge check
+## How would we complete the following?
+
+
+```r
+nobel_laureates %&gt;%
+  mutate(new_variable = 
+*          ifelse(prize_date %within% _______(start_point, end_point), 1, 0))
+```
+
+--
+
+## <i class="fas  fa-check-square "></i> Correct answer:
+
+
+```r
+nobel_laureates %&gt;%
+  mutate(new_variable = 
+           ifelse(prize_date %within% interval(start_point, end_point), 1, 0))
+```
+
+---
+class: title-slide, center, middle
+
+# Let's go live!
+
+## <i class="fas  fa-code "></i>
+
+---
+class: title-slide, center, middle
+
+# Fin.
+
+## Thank you!
+
+## <i class="fas  fa-chalkboard-teacher "></i>
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"highlightLanguage": ["r", "css", "yaml"],
+"countIncrementalSlides": true,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
