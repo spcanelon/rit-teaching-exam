@@ -49,13 +49,17 @@ knitr::include_graphics("images/lubridate_hex.png")
 
 ---
 class: left, middle
-# This week: Time spans in lubridate
+# Today: Time spans in lubridate
+.center[
 ![:scale 90%](images/lubridate_timespans.png)
+]
 
 ---
 class: left, middle
-# Today's lesson: intervals
+# This lesson: intervals
+.center[
 ![:scale 90%](images/lubridate_timespans_intervals.png)
+]
 
 ---
 class: left, middle
@@ -99,7 +103,7 @@ class: inverse, center, middle
 
 ---
 # `r icon::fa("brain")` Knowledge check
-## What would we write to find a time interval?
+## Which of these could we use to find a time interval?
 
 ### a. `interval(start_point) - interval(end_point)`
 
@@ -176,6 +180,7 @@ nobel_laureates %>%
 ```
 
 --
+
 ## `r icon::fa("check-square")` Correct answer:
 
 ```{r eval=FALSE}

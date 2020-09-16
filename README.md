@@ -14,3 +14,6 @@ Carmen is a graduate student in an informatics lab that works with clinical data
 ## [Live demo](lubridate_livecode.Rmd)
 
 ## [Live demo + solutions](lubridate_livecode_solutions.Rmd)
+
+# Concept Map
+![](images/RIT_lubridate_ex2-3.png)
