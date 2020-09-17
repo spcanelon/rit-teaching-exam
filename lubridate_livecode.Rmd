@@ -38,7 +38,7 @@ nobel_laureates_prize_date
 
 # Example 1: Finding `age_at_award`
 
-For this step we'll use lubridate's `interval()` and `dyears()` functions to find each laureate's age at the time they received the Nobel prize.
+For this step we'll use lubridate's `interval()` and `years()` functions to find each laureate's age at the time they received the Nobel prize.
 
 For more information: https://r4ds.had.co.nz/dates-and-times.html#intervals
 
